@@ -13,15 +13,15 @@ servers:
     url: mqtt://test.mosquitto.org
     protocol: mqtt
 channels:
-  light/measured:
+  light/measured: #name of channel to subscribe to
     publish:
       summary: Inform about environmental lighting conditions for a particular streetlight.
-      operationId: onLightMeasured
+      operationId: onLightMeasured # describes what is the name of function or method that takes care of this functionality in the generated code
       message:
         name: LightMeasured
-        payload:
+        payload: #payload property is used to understand how the event should look like when publishing to that channel
           type: object
-          properties:
+          properties: #The Payload property defines the content of the event using AsyncAPI schemas. It means that your event payload should contain an id and a lumens property —which are integers bigger than zero—, and a sentAt property that should be a string containing a date and time.
             id:
               type: integer
               minimum: 0
